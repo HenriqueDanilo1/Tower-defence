@@ -1,5 +1,3 @@
-"use strict";
-
 // GENERAL
 const maxSpawnDistance = 400;
 const rotateAng = 14.06; //(spins*360+60)/81
@@ -29,6 +27,7 @@ const gameOver = new Audio("audios/gameOver.wav");
 const goodEndingAud = new Audio("audios/goodEnding.wav");
 const goodEndingAudOST = new Audio("audios/goodEndingOST.wav");
 const click = new Audio("audios/click.wav");
+const strike = new Audio("audios/strike.wav");
 
 let flyingSpeed = 1; // between 1 and 1.5
 let random = 0;
@@ -486,14 +485,20 @@ function restart(badEndind) {
 
 function updateScore() {
   score.innerHTML = (parseInt(score.innerText) + 1).toString().padStart(3, "0");
-  coinSound.play();
-  if (parseInt(score.innerText) > 10) {
-    flyingSpeed = 1.2;
-  }
-  if (parseInt(score.innerText) > 20) {
-    flyingSpeed = 1.35;
-  }
-  if (parseInt(score.innerText) > 30) {
-    flyingSpeed = 1.5;
+  switch (parseInt(score.innerText)) {
+    case 10:
+      flyingSpeed = 1.2;
+      strike.play();
+      break;
+    case 25:
+      flyingSpeed = 1.35;
+      strike.play();
+      break;
+    case 50:
+      flyingSpeed = 1.5;
+      strike.play();
+      break;
+    default:
+      coinSound.play();
   }
 }
