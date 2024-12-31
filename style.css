@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
 
+@font-face {
+  font-family: monocraft;
+  src: url(fonts/monocraft.ttf);
+}
+
 @keyframes planeFlyingAtStart {
   0% {
     background-image: url(images/01.png);
@@ -226,17 +231,19 @@ body {
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  scale: 1.5;
 }
 
 /* screen */
 .main {
   border: 1px solid gray;
-  height: 300px;
-  width: 500px;
+  min-height: 300px;
+  min-width: 500px;
+  aspect-ratio: 5/3;
   display: block;
   position: relative;
   background-image: url(images/sky.png);
-  background-size: 500px 300px;
+  background-size: 100%;
   background-repeat: repeat;
   animation: 47s infinite linear sky;
   overflow: hidden;
@@ -512,4 +519,16 @@ body {
   background-repeat: round;
   top: 0;
   opacity: 0;
+}
+
+/* dani do g play 24 */
+.danidogplay24 {
+  bottom: 0px;
+  right: -10px;
+  position: absolute;
+  font-size: 12px;
+  scale: 0.8;
+  font-family: monocraft;
+  cursor: default;
+  z-index: 5;
 }

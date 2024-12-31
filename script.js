@@ -51,9 +51,12 @@ let restarted = 0;
 let started = 0;
 
 document.addEventListener("keydown", (event) => {
-  if (event.code == "Space") {
+  if (event.code == "Space" || event.code == "ArrowUp") {
     start();
   }
+});
+main.addEventListener("click", () => {
+  start();
 });
 
 let jumpEventlistener = (event) => {
@@ -61,6 +64,12 @@ let jumpEventlistener = (event) => {
     (event.code === "Space" || event.code === "ArrowUp") &&
     getComputedStyle(player).bottom == "40px"
   ) {
+    jumpSound.play();
+    increaseHeight();
+  }
+};
+let jumpEventlistenerClick = (event) => {
+  if (getComputedStyle(player).bottom == "40px") {
     jumpSound.play();
     increaseHeight();
   }
@@ -97,6 +106,7 @@ function animation() {
       } else {
         kickSound.play();
         document.addEventListener("keydown", jumpEventlistener);
+        main.addEventListener("click", jumpEventlistenerClick);
         gameRunning = 1;
         player.style.rotate = "0deg";
         playerSkin.style.animation = "0.5s infinite linear planeFlying";
@@ -132,9 +142,12 @@ function start() {
   if (!started) {
     started = 1;
     document.removeEventListener("keydown", (event) => {
-      if (event.code == "Space") {
+      if (event.code == "Space" || event.code == "ArrowUp") {
         start();
       }
+    });
+    main.removeEventListener("click", () => {
+      start();
     });
     soundTrack.play();
     soundTrack.volume = 0.01;
@@ -372,7 +385,8 @@ function endGame(badEndind) {
 }
 
 function badEnding() {
-  document.addEventListener("keydown", restartEventB);
+  document.addEventListener("keydown", restartEventB1);
+  main.addEventListener("click", restartEventB2);
   gameOver.play();
   restartDivB.style.zIndex = "4";
   setTimeout(() => {
@@ -385,7 +399,8 @@ function badEnding() {
 }
 
 function goodEnding() {
-  document.addEventListener("keydown", restartEventA);
+  document.addEventListener("keydown", restartEventA1);
+  main.addEventListener("click", restartEventA2);
   goodEndingAud.play();
   goodEndingAudOST.play();
   restartDivA.style.zIndex = "4";
@@ -394,22 +409,30 @@ function goodEnding() {
   }, 20);
 }
 
-let restartEventA = function (event) {
-  if (event.code == "Space") {
+let restartEventA1 = function (event) {
+  if (event.code == "Space" || event.code == "ArrowUp") {
     restart(0);
   }
 };
-let restartEventB = function (event) {
-  if (event.code == "Space") {
+let restartEventB1 = function (event) {
+  if (event.code == "Space" || event.code == "ArrowUp") {
     restart(1);
   }
+};
+let restartEventA2 = function () {
+  restart(0);
+};
+let restartEventB2 = function () {
+  restart(1);
 };
 
 function restart(badEndind) {
   if (restarted == 0) {
     restarted = 1;
-    document.removeEventListener("keydown", restartEventB);
-    document.removeEventListener("keydown", restartEventA);
+    document.removeEventListener("keydown", restartEventB1);
+    document.removeEventListener("keydown", restartEventA1);
+    main.removeEventListener("click", restartEventB2);
+    main.removeEventListener("click", restartEventA2);
     if (badEndind) {
       background = background035;
       div = restartDivB;
