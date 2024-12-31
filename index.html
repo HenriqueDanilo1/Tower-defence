@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tower defense?</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="notrealmain">
+      <div class="score">
+        <div class="text" id="score">000</div>
+      </div>
+      <main class="main" id="main">
+        <button class="start" id="start" onclick="start()">
+          <div id="background025"></div>
+          <div class="startText">START</div>
+          <div class="play" id="playButton"></div>
+        </button>
+        <button class="restartA" id="restartA" onclick="restart(0)">
+          <div id="background045"></div>
+          <div class="restartTextA">MISSON PASSED</div>
+          <div class="restartGifA"></div>
+        </button>
+        <button class="restartB" id="restartB" onclick="restart(1)">
+          <div id="background035"></div>
+          <div class="restartTextB2" id="tryAgainB">TRY AGAIN</div>
+          <div class="restartTextB1" id="gameOver">GAME OVER</div>
+          <div class="restartGifB"></div>
+        </button>
+        <div class="player" id="player">
+          <div class="playerSkin" id="playerSkin"></div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

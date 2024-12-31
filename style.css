@@ -1,0 +1,515 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+
+@keyframes planeFlyingAtStart {
+  0% {
+    background-image: url(images/01.png);
+  }
+  10% {
+    background-image: url(images/02.png);
+  }
+  20% {
+    background-image: url(images/01.png);
+  }
+  30% {
+    background-image: url(images/02.png);
+  }
+  40% {
+    background-image: url(images/01.png);
+  }
+  50% {
+    background-image: url(images/02.png);
+  }
+  60% {
+    background-image: url(images/01.png);
+  }
+  70% {
+    background-image: url(images/02.png);
+  }
+  80% {
+    background-image: url(images/01.png);
+  }
+  90% {
+    background-image: url(images/02.png);
+  }
+  100% {
+    background-image: url(images/01.png);
+  }
+}
+@keyframes planeFlying {
+  0% {
+    background-image: url(images/01.png);
+  }
+  10% {
+    background-image: url(images/02.png);
+  }
+  20% {
+    background-image: url(images/01.png);
+  }
+  25% {
+    rotate: -15deg;
+  }
+  30% {
+    background-image: url(images/02.png);
+  }
+  40% {
+    background-image: url(images/01.png);
+  }
+  50% {
+    background-image: url(images/02.png);
+    rotate: 0deg;
+  }
+  60% {
+    background-image: url(images/01.png);
+  }
+  70% {
+    background-image: url(images/02.png);
+  }
+  75% {
+    rotate: -15deg;
+  }
+  80% {
+    background-image: url(images/01.png);
+  }
+  90% {
+    background-image: url(images/02.png);
+  }
+  100% {
+    background-image: url(images/01.png);
+  }
+}
+@keyframes planeFlyingJumping {
+  0% {
+    background-image: url(images/01.png);
+    bottom: 40px;
+  }
+  10% {
+    background-image: url(images/02.png);
+  }
+  20% {
+    background-image: url(images/01.png);
+  }
+  25% {
+    rotate: -15deg;
+  }
+  30% {
+    background-image: url(images/02.png);
+  }
+  40% {
+    background-image: url(images/01.png);
+  }
+  50% {
+    background-image: url(images/02.png);
+    rotate: 0deg;
+    bottom: 90px;
+  }
+  60% {
+    background-image: url(images/01.png);
+  }
+  70% {
+    background-image: url(images/02.png);
+  }
+  75% {
+    rotate: -15deg;
+  }
+  80% {
+    background-image: url(images/01.png);
+  }
+  90% {
+    background-image: url(images/02.png);
+  }
+  100% {
+    background-image: url(images/01.png);
+    bottom: 40px;
+  }
+}
+@keyframes startText {
+  0% {
+    color: #09ff00;
+  }
+  30% {
+    color: #fffb00;
+  }
+  65% {
+    color: #ff0000;
+  }
+  100% {
+    color: #ff0080;
+  }
+}
+@keyframes sky {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -500px;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+@keyframes startIcon {
+  0% {
+    background-image: url(images/playGreen.png);
+  }
+  30% {
+    background-image: url(images/playYellow.png);
+  }
+  65% {
+    background-image: url(images/playRed.png);
+  }
+  100% {
+    background-image: url(images/playPink.png);
+  }
+}
+
+@keyframes restartIcon {
+  0% {
+    rotate: 0deg;
+    scale: 1.2;
+  }
+  25% {
+    rotate: 180deg;
+    scale: 0.8;
+  }
+  50% {
+    rotate: 360deg;
+    scale: 1.2;
+  }
+  75% {
+    rotate: 180deg;
+    scale: 0.8;
+  }
+  100% {
+    rotate: 0deg;
+    scale: 1.2;
+  }
+}
+
+@keyframes enemyFalling {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -130px;
+  }
+}
+
+@keyframes GOFall {
+  0% {
+    top: 7%;
+    color: #09ff00;
+  }
+  30% {
+    color: #fffb00;
+  }
+  65% {
+    color: #ff0000;
+  }
+  75% {
+    top: 100%;
+  }
+  100% {
+    color: #ff0080;
+  }
+}
+
+body {
+  background-color: #313131;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* screen */
+.main {
+  border: 1px solid gray;
+  height: 300px;
+  width: 500px;
+  display: block;
+  position: relative;
+  background-image: url(images/sky.png);
+  background-size: 500px 300px;
+  background-repeat: repeat;
+  animation: 47s infinite linear sky;
+  overflow: hidden;
+}
+
+/* player */
+.player {
+  width: 68px;
+  height: 29px;
+  background-size: cover;
+  position: absolute;
+  bottom: 40px;
+  left: -85px;
+  z-index: 3;
+}
+.playerSkin {
+  width: 83px;
+  height: 48px;
+  background-size: cover;
+  position: absolute;
+  top: -10px;
+  right: 0;
+  z-index: 3;
+  animation: 0.5s infinite linear planeFlyingAtStart;
+}
+.playerAfterLose {
+  width: 83px;
+  height: 48px;
+  background-size: cover;
+  position: absolute;
+  top: -10px;
+  background-image: url(images/01.png);
+  rotate: 5deg !important;
+  z-index: 4;
+}
+
+/* buildings */
+.enemy1 {
+  height: 110px;
+  width: 35px;
+  position: absolute;
+  right: -38px;
+  bottom: 0;
+  z-index: 2;
+}
+.enemy15 {
+  background-image: url(images/enemy2.png);
+  background-size: cover;
+  background-repeat: round;
+  background-position: top;
+  height: 123px;
+  width: 35px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+}
+.enemy2 {
+  background-color: #0000;
+  background-image: url(images/enemy1.png);
+  background-repeat: round;
+  background-size: cover;
+  background-position: top;
+  height: 70px;
+  width: 35px;
+  position: absolute;
+  right: -113px;
+  bottom: 0;
+  z-index: 2;
+}
+.enemy3 {
+  background-color: #0000;
+  background-image: url(images/enemy1.png);
+  background-repeat: round;
+  background-size: cover;
+  background-position: top;
+  height: 70px;
+  width: 35px;
+  position: absolute;
+  right: -38px;
+  bottom: 0;
+  z-index: 2;
+}
+.enemy4 {
+  background-color: #0000;
+  background-image: url(images/enemy1.png);
+  background-repeat: round;
+  background-size: cover;
+  background-position: top;
+  height: 110px;
+  width: 35px;
+  position: absolute;
+  right: -75px;
+  bottom: 0;
+  z-index: 2;
+}
+
+/* score */
+.score {
+  width: 90px;
+  height: 50px;
+  background-image: url(images/background01.png);
+  background-size: cover;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  z-index: 4;
+}
+.text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 8%;
+  top: -1.5%;
+  font-size: 42px;
+  font-family: "Pixelify Sans", serif;
+  font-weight: 1000;
+  color: rgb(255, 230, 0);
+  -webkit-text-stroke: 2px black;
+}
+
+/* start button */
+.start {
+  background-image: url(images/background02.png);
+  background-size: cover;
+  border: 0;
+  background-color: #0000;
+  position: absolute;
+  height: 74px;
+  width: 240px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.startText {
+  position: absolute;
+  top: 10%;
+  left: 8.3%;
+  font-size: 50px;
+  font-family: "Pixelify Sans", serif;
+  font-weight: 1000;
+  animation: startText 2s infinite steps(1);
+  -webkit-text-stroke: 2px black;
+}
+.play {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  display: block;
+  top: 19%;
+  right: 6%;
+  animation: startIcon 2s infinite steps(1);
+  background-size: cover;
+}
+#background025 {
+  background-image: url(images/background025.png);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  top: 0;
+  opacity: 1;
+}
+
+/* restart button - bad ending*/
+.restartB {
+  background-image: url(images/background03.png);
+  background-size: cover;
+  border: 0;
+  background-color: #0000;
+  position: absolute;
+  height: 74px;
+  width: 360px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.13s;
+  z-index: -1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.restartTextB2 {
+  position: absolute;
+  top: -55px;
+  left: 3%;
+  font-size: 56px;
+  font-family: "Pixelify Sans", serif;
+  font-weight: 1000;
+  animation: startText 2s infinite steps(1);
+  -webkit-text-stroke: 2px black;
+  transition: 0.4s linear;
+}
+.restartTextB1 {
+  position: absolute;
+  top: 7%;
+  left: 3%;
+  font-size: 53px;
+  font-family: "Pixelify Sans", serif;
+  font-weight: 1000;
+  animation: startText 2s infinite steps(1);
+  -webkit-text-stroke: 2px black;
+  transition: 0.4s linear;
+}
+.restartGifB {
+  height: 55px;
+  width: 55px;
+  position: absolute;
+  display: block;
+  right: 5%;
+  background-image: url(images/tryAgain.png);
+  animation: restartIcon 2s infinite;
+  background-size: cover;
+}
+#background035 {
+  background-image: url(images/background035.png);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  top: 0;
+  opacity: 1;
+}
+
+/* restart button - good ending*/
+.restartA {
+  background-image: url(images/background03.png);
+  background-size: cover;
+  background-repeat: round;
+  border: 0;
+  background-color: #0000;
+  position: absolute;
+  height: 80px;
+  width: 360px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: 0.13s;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.restartTextA {
+  position: absolute;
+  top: 23%;
+  left: 3%;
+  font-size: 36px;
+  font-family: "Pixelify Sans", serif;
+  font-weight: 1000;
+  animation: startText 2s infinite steps(1);
+  -webkit-text-stroke: 2px black;
+  transition: 0.4s linear;
+}
+.restartGifA {
+  height: 55px;
+  width: 55px;
+  position: absolute;
+  display: block;
+  right: 5%;
+  background-image: url(images/missionPassed.png);
+  animation: restartIcon 2s infinite;
+  background-size: cover;
+}
+#background045 {
+  background-image: url(images/background035.png);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: round;
+  top: 0;
+  opacity: 0;
+}
