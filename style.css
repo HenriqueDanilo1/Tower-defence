@@ -432,7 +432,7 @@ body {
   top: -55px;
   left: 3%;
   font-size: 56px;
-  font-family: monospace;
+  font-family: "Pixelify Sans", serif;
   font-weight: 1000;
   animation: startText 2s infinite steps(1);
   -webkit-text-stroke: 2px black;

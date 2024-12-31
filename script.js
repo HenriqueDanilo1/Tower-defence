@@ -208,7 +208,7 @@ function spawnEnemy() {
                 newEnemy.classList.add("enemy4");
                 main.appendChild(newEnemy);
                 break;
-              case random < 0.3:
+              case random < 0.4:
                 //new enemy skin
                 let newEnemy2 = document.createElement("div");
                 newEnemy2.classList.add("enemy15");
