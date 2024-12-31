@@ -21,14 +21,14 @@ const gameOverText = document.getElementById("gameOver");
 const tryAgain = document.getElementById("tryAgainB");
 
 const jumpSound = new Audio("audios/jump.wav");
-const startSound = new Audio("audios/kick.wav");
-const kickSound = new Audio("audios/clupi.wav");
+const kickSound = new Audio("audios/kick.wav");
 const coinSound = new Audio("audios/coin.wav");
 const soundTrack = new Audio("audios/soundtrack.mp3");
 const fallen = new Audio("audios/fallen.wav");
 const gameOver = new Audio("audios/gameOver.wav");
 const goodEndingAud = new Audio("audios/goodEnding.wav");
 const goodEndingAudOST = new Audio("audios/goodEndingOST.wav");
+const click = new Audio("audios/click.wav");
 
 let flyingSpeed = 1; // between 1 and 1.5
 let random = 0;
@@ -141,6 +141,7 @@ function animation() {
 function start() {
   if (!started) {
     started = 1;
+    click.play();
     document.removeEventListener("keydown", (event) => {
       if (event.code == "Space" || event.code == "ArrowUp") {
         start();
@@ -371,6 +372,8 @@ function reduceHeight() {
 }
 
 function endGame(badEndind) {
+  document.removeEventListener("keydown", jumpEventlistener);
+  main.removeEventListener("click", jumpEventlistenerClick);
   gameRunning = 0;
   playerSkin.style.animation = "";
   playerSkin.classList.remove("player");
@@ -444,6 +447,7 @@ function restart(badEndind) {
     soundTrack.play();
     soundTrack.volume = 0.01;
     background.style.opacity = "0";
+    click.play();
 
     setTimeout(() => {
       background.style.opacity = "1";
